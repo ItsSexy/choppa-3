@@ -1,0 +1,879 @@
+/*================================
+créer une liste de variables de couleurs
+================================*/
+
+:root {
+  --color-gray-100: #464646;
+  --color-gray-200: #343434;
+  --color-gray-300: #1b1a1a;
+  --color-gray-400: #0d0000;
+
+  --color-brand-100: #f2edd5;
+  --color-brand-150: #e5dbab;
+  --color-brand-200: #8c0e03;
+  --color-brand-300: #590202;
+  --color-brand-400: #260101;
+  --color-brand-500: #0d0000;
+
+  --color-flagg-100: #628c73;
+  --color-flagg-200: #f2edd5;
+  --color-flagg-300: #8a4d4d;
+
+  --color-white: #ffffff;
+  --color-text-light: #f2edd5;
+  --color-text-dark: #1b1a1a;
+}
+
+*,
+*::before,
+*::after {
+  margin-top: 0;
+}
+
+/*================================
+-enlever les margin et appliquer une couleur au site
+-determiner les fonts pour le site
+================================*/
+
+body {
+  margin: 0;
+  background-color: var(--color-text-dark);
+}
+
+.body--light {
+  background-color: var(--color-text-light);
+}
+
+html {
+  font: 400 100%/1.5 "Roboto", "Helvetica", "Arial", system-ui, sans-serif;
+  scroll-behavior: smooth;
+}
+
+/*================================
+créer plusieurs variantes de "Montserrat"
+================================*/
+
+@font-face {
+  font-family: "Montserrat";
+  src: url(../fonts/montserrat-medium.woff2) format("woff2");
+  font-weight: 500;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Montserrat";
+  src: url(../fonts/montserrat-light.woff2) format("woff2");
+  font-weight: 300;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Montserrat";
+  src: url(../fonts/montserrat-black.woff2) format("woff2");
+  font-weight: 900;
+  font-display: swap;
+}
+
+/*================================
+siteheader
+================================*/
+
+.siteheader {
+  padding-top: 25px;
+}
+
+.siteheader__banner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+/*================================
+header nav
+================================*/
+
+/* 
+-creer une navigation verticale centré dans le viewport
+-supprimer le padding 'naturel' de la liste
+-appliquer une font (etc) aux items dans la liste
+-ajouter une effet de scale et de color sur un "hover" 
+*/
+
+.nav {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch;
+  padding-bottom: 75px;
+}
+
+.nav__link {
+  display: block;
+  text-align: center;
+  font-weight: 900;
+  font-size: calc(30 / 20 * 1rem);
+  line-height: 1.5;
+  font-family: "Montserrat";
+  color: var(--color-flagg-200);
+  text-decoration: none;
+  transform: scale(1);
+  transition: transform 0.2s ease-in-out, color 0.2s ease-in-out;
+}
+
+.nav__link:hover {
+  color: var(--color-flagg-300);
+  transform: scale(1.1);
+}
+
+/*================================
+fluidimage
+================================*/
+
+.fluidimage {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/*================================
+containers
+================================*/
+
+/*
+- centrer dans les section
+- largeur max
+- padding latéraux (pas taper contre les bords
+- 3 tailles différentes (normal, medium, small)
+*/
+
+.container {
+  position: relative;
+  margin: 0 auto;
+  max-width: 1320px;
+  padding-left: 18px;
+  padding-right: 18px;
+  z-index: 5;
+}
+
+@media all and (min-width: 1024px) {
+  .container--marginstart {
+    margin-left: 220px;
+  }
+}
+
+@media all and (min-width: 1024px) {
+  .container--marginend {
+    margin-right: 220px;
+  }
+}
+
+.container--medium {
+  max-width: 1090px;
+}
+
+.container--small {
+  max-width: 840px;
+}
+
+/*================================
+sections
+================================*/
+
+/*
+- padding verticaux responsive
+- variantes pour couleurs de fonds
+- variantes pour les images spécifiques à chaque section
+*/
+
+.section {
+  padding-top: 100px;
+  padding-bottom: 60px;
+  background-color: var(--color-text-dark);
+}
+
+@media all and (min-width: 750px) {
+  .section {
+    padding-top: 120px;
+    padding-bottom: 84px;
+  }
+}
+
+@media all and (min-width: 1024px) {
+  .section {
+    padding-top: 180px;
+    padding-bottom: 180px;
+  }
+}
+
+.section--light {
+  background-color: var(--color-text-light);
+}
+
+/* ---------------- section origins ---------------- */
+
+/*
+- image in ::before with position absolute
+- section is positioned relative so we have a contexte to position the ::before
+*/
+
+.origins{
+  padding: 25px;
+}
+
+.section--origins {
+  position: relative;
+}
+
+@media all and (min-width: 1500px) {
+  .section--origins {
+    padding-top: 300px;
+  }
+}
+
+.section--origins::before {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+
+  content: "";
+  width: 300px;
+  height: 44px;
+  background-image: url(../img/bkg_origins.svg);
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+@media all and (min-width: 750px) {
+  .section--origins::before {
+    width: 600px;
+    height: 88px;
+  }
+}
+
+@media all and (min-width: 1500px) {
+  .section--origins::before {
+    width: 1200px;
+    height: 176px;
+  }
+}
+
+/* ---------------- section music ---------------- */
+
+/*
+- linear gradient to give illusion of cutout
+- ::before positioned absolutely with image in there
+- section positioned relatively to give context to position the ::before
+*/
+
+.section--music {
+  position: relative; /* context to position the ::before */
+  background-image: linear-gradient(
+    to bottom,
+    var(--color-text-light) 0%,
+    var(--color-text-light) 50px,
+    var(--color-text-dark) 50px,
+    var(--color-text-dark) 100%
+  );
+}
+
+.section--music::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+
+  width: calc(660px / 4);
+  height: calc(880px / 4);
+  background-image: url(../img/bkg_music.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+@media all and (min-width: 500px) {
+  .section--music::before {
+    width: calc(660px / 3);
+    height: calc(880px / 3);
+  }
+}
+
+@media all and (min-width: 1024px) {
+  .section--music::before {
+    width: calc(660px / 2);
+    height: calc(880px / 2);
+  }
+}
+
+.section--tour {
+  position: relative;
+}
+
+.section--curse {
+  padding: 36px;
+}
+
+/*
+.section--tour::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 350px;
+  height: 200px;
+  background-image: url(../img/bkg_tour_dates.svg);
+  background-position: 0 0;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+*/
+
+/*================================
+titles
+================================*/
+
+.title2 {
+  font-family: "Montserrat", sans-serif;
+  font-size: calc(33 / 16 * 1rem);
+  font-weight: 900;
+  line-height: 1.2;
+  text-transform: uppercase;
+  color: var(--color-text-dark);
+}
+
+.title2--light {
+  color: var(--color-text-light);
+}
+
+@media all and (min-width: 750px) {
+  .title2 {
+    font-size: calc(48 / 16 * 1rem);
+  }
+}
+
+@media all and (min-width: 1024px) {
+  .title2 {
+    font-size: calc(57 / 16 * 1rem);
+  }
+}
+
+.title3 {
+  position: relative;
+  bottom: 25px;
+  padding-left: 100px;
+  margin: 0;
+  margin-right: 25px;
+  font-weight: 300;
+  font-size: calc(25 / 20 * 1rem);
+  line-height: 1;
+  font-family: "Montserrat";
+  color: var(--color-text-dark);
+  text-decoration: none;
+}
+
+@media all and (min-width: 750px) {
+  .title3 {
+    position: relative;
+    font-size: calc(35 / 20 * 1rem);
+    left: 48px;
+    bottom: 40px;
+  }
+}
+
+@media all and (min-width: 1024px) {
+  .title3 {
+    position: relative;
+    font-size: calc(45 / 20 * 1rem);
+    left: 60px;
+    bottom: 40px;
+  }
+}
+
+/*================================
+alignment utilities
+================================*/
+
+.text-center {
+  text-align: center;
+}
+
+.text-right {
+  text-align: right;
+}
+
+/*================================
+text in columns
+================================*/
+
+.textcols {
+  column-width: 50ch;
+  column-gap: calc(50 / 16 * 1rem);
+}
+
+.textcols1 {
+  font-family: "Montserrat", sans-serif;
+  font-size: calc(22 / 16 * 1rem);
+  font-weight: 500;
+  line-height: 1.2;
+  color: var(--color-text-dark);
+}
+
+.textcols2 {
+  font-family: "Montserrat", sans-serif;
+  font-size: calc(18 / 16 * 1rem);
+  font-weight: 500;
+  line-height: 1.2;
+  color: var(--color-gray-100);
+}
+
+.textcols1--light {
+  color: var(--color-brand-150);
+}
+
+.textcols2--light {
+  color: var(--color-text-light);
+}
+
+
+/*================================
+front page image
+================================*/
+
+.choppa--background {
+  width: 700px;
+}
+
+/*================================
+music
+================================*/
+
+/* 
+-
+*/
+
+.musiclist {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(270px, 320px));
+  justify-content: center;
+  gap: 30px;
+}
+
+.musiccard {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch;
+  border-radius: 10px;
+  background-color: var(--color-text-light);
+  padding: 48px;
+}
+
+.musiccard__image {
+  margin-bottom: 24px;
+}
+
+.musiccard__title {
+  position: relative;
+  bottom: 50px;
+  margin: 0;
+  text-align: center;
+  font-weight: 500;
+  font-size: calc(20 / 20 * 1rem);
+  line-height: 2.4;
+  font-family: "Montserrat";
+  color: var(--color-text-dark);
+}
+
+.musiccard__date {
+  position: relative;
+  bottom: 50px;
+  margin: 0;
+  text-align: center;
+  font-weight: 900;
+  font-size: calc(18 / 20 * 1rem);
+  line-height: 2.4;
+  font-family: "Montserrat";
+  color: var(--color-flagg-100);
+}
+
+.musiccard__certification {
+  display: flex;
+  justify-content: center;
+}
+
+/*================================
+tour
+================================*/
+
+/* 
+-
+*/
+
+.tourtitle {
+  position: relative;
+  width: 1920px;
+  max-width: 100%;
+  height: auto;
+  bottom: 100px;
+}
+
+@media all and (min-width: 750px) {
+  .tourtitle {
+    bottom: 125px;
+  }
+}
+
+@media all and (min-width: 1000px) {
+  .tourtitle {
+    bottom: 190px;
+  }
+}
+
+.tourlist {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: minmax(270px, 3fr);
+}
+
+@media all and (min-width: 750px) {
+  .tourlist {
+    grid-template-columns: repeat(2, minmax(270px, 3fr));
+    gap: 168px;
+  }
+}
+
+.tourcard--A {
+  padding-left: 0;
+  width: 270px;
+  padding-bottom: 90px;
+  margin: auto;
+}
+
+.tourcard--B {
+  padding-right: 0;
+  width: 270px;
+  padding-bottom: 90px;
+  margin: auto;
+}
+
+@media all and (min-width: 1100px) {
+  .tourcard--A {
+    padding-left: 180px;
+  }
+}
+
+@media all and (min-width: 1100px) {
+  .tourcard--B {
+    padding-right: 180px;
+  }
+}
+
+.tour__city {
+  margin: 0;
+  font-weight: 900;
+  font-size: calc(40 / 20 * 1rem);
+  line-height: 1;
+  font-family: "Montserrat";
+  color: var(--color-text-dark);
+}
+
+.tour__country {
+  margin: 0;
+  font-weight: 300;
+  font-size: calc(40 / 20 * 1rem);
+  line-height: 1.3;
+  font-family: "Montserrat";
+  color: var(--color-text-dark);
+}
+
+.tour__date {
+  margin: 0;
+  padding: 5px;
+  font-weight: 500;
+  font-size: calc(18 / 20 * 1rem);
+  line-height: 1;
+  font-family: "Montserrat";
+  display: block;
+  cursor: pointer;
+  color: var(--color-text-light);
+  background-color: var(--color-text-dark);
+}
+
+.tour__date:hover {
+  background-color: var(--color-flagg-300);
+  transition: 0.2s ease-in-out;
+}
+
+.tour__datelink {
+  text-decoration: none;
+}
+
+.tour__street {
+  margin: 0;
+  padding: 5px;
+  font-weight: 500;
+  font-size: calc(18 / 20 * 1rem);
+  line-height: 1;
+  font-family: "Montserrat";
+  color: var(--color-text-dark);
+}
+
+.tour__map {
+  width: 270px;
+}
+
+/*================================
+curse
+================================*/
+
+/* 
+-
+*/
+
+.curse {
+  padding-top: 25px;
+  padding-right: 25px;
+  padding-left: 25px;
+  padding-bottom: 100px;
+}
+
+.curselist {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: calc(30 / 16 * 1rem);
+}
+
+@media all and (min-width: 750px) {
+  .curseitem {
+    margin-left: 40%;
+  }
+
+  .curseitem--reverse {
+    margin-left: 0;
+    margin-right: 40%;
+  }
+}
+
+.curseitem__name {
+  font-weight: 900;
+  font-size: calc(36 / 20 * 1rem);
+  line-height: 1;
+  font-family: "Montserrat";
+  color: var(--color-brand-150);
+}
+
+.curseitem__date {
+  font-weight: 500;
+  font-size: calc(22 / 20 * 1rem);
+  line-height: 1;
+  font-family: "Montserrat";
+  color: var(--color-text-light);
+}
+
+/*================================
+footer
+================================*/
+
+/* 
+-
+*/
+
+.footerlist {
+  padding: 0;
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(minmax(270px, 1fr));
+}
+
+@media all and (min-width: 1000px) {
+  .footerlist {
+    grid-template-columns: repeat(3, minmax(270px, 1fr));
+    gap: 60px;
+  }
+}
+
+.footerlist__goback {
+  list-style: none;
+  margin-top: 60px;
+  padding: 0;
+}
+
+.footerlist__socials {
+  list-style: none;
+  margin-top: 60px;
+  padding: 0;
+}
+
+.footerlist__tour {
+  list-style: none;
+  margin-top: 60px;
+  padding: 0;
+}
+
+.f-l__title {
+  text-align: center;
+  font-weight: 500;
+  font-size: calc(20 / 20 * 1rem);
+  line-height: 1.5;
+  font-family: "Montserrat";
+  color: var(--color-text-dark);
+}
+
+.f-l__item {
+  margin: 0;
+  text-align: center;
+  font-weight: 900;
+  font-size: calc(24 / 20 * 1rem);
+  line-height: 1.5;
+  font-family: "Montserrat";
+  color: var(--color-text-dark);
+}
+
+.f-l__item:hover {
+  color: var(--color-flagg-300);
+  transition: 0.2s ease-in-out;
+}
+
+.f-l__itemlink {
+  display: block;
+  cursor: pointer;
+  text-decoration: none;
+  color: var(--color-text-dark);
+}
+
+/*================================ footer ================================*/
+
+/* 
+- 
+*/
+
+.tourpage {
+  padding: 0;
+  padding-bottom: 30px;
+}
+
+.country {
+  padding-top: 30px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 1300px;
+}
+
+.country__logo {
+  border-radius: 6px;
+  display: inline-block;
+  cursor: pointer;
+  width: 45px;
+  max-width: 100%;
+  margin: 6px;
+  padding: 6px;
+  opacity: 0.75;
+}
+
+.country__logo:hover {
+  scale: 1.1;
+  opacity: 1;
+  transition: 0.3s ease-in-out;
+}
+
+@media all and (min-width: 400px) {
+  .country__logo {
+    width: 100px;
+    max-width: 100%;
+  }
+}
+
+@media all and (min-width: 1024px) {
+  .country__logo {
+    width: 150px;
+    max-width: 100%;
+  }
+}
+
+.country__letter {
+  position: relative;
+  width: 48px;
+  bottom: 80px;
+  right: 90px;
+}
+
+@media all and (min-width: 750px) {
+  .country__letter {
+    position: relative;
+    width: 60px;
+    bottom: 115px;
+    right: 135px;
+  }
+}
+
+@media all and (min-width: 1024px) {
+  .country__letter {
+    position: relative;
+    width: 70px;
+    bottom: 140px;
+    right: 160px;
+  }
+}
+
+.content {
+  max-width: 1300px;
+  padding-left: 7px;
+  padding-right: 7px;
+}
+
+@media all and (min-width: 750px) {
+  .content {
+    padding-left: 29px;
+    padding-right: 29px;
+  }
+}
+
+@media all and (min-width: 1024px) {
+  .content {
+    padding-left: 51px;
+    padding-right: 51px;
+  }
+}
+
+.contenthead {
+  font-weight: 500;
+  font-size: calc(25 / 20 * 1rem);
+  line-height: 1.5;
+  font-family: "Montserrat";
+  color: var(--color-text-dark);
+  text-decoration: none;
+}
+
+.contenttext {
+  font-weight: 500;
+  font-size: calc(20 / 20 * 1rem);
+  line-height: 1.5;
+  font-family: "Montserrat";
+  color: var(--color-gray-100);
+  text-decoration: none;
+  padding-bottom: 30px;
+}
+
+.contentmap {
+  width: 1300px;
+  max-width: 100%;
+}
+
+.footerend {
+  height: 25px;
+  background-color: var(--color-text-dark);
+}
